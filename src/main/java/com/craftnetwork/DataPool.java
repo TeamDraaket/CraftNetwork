@@ -13,7 +13,9 @@ public class DataPool {
 	private static CraftNetwork cn;
 	
 	private static File friendsFile;
+	private static File friendRequestFile;
 	private static YamlConfiguration friendsConfig;
+	private static YamlConfiguration friendRequestConfig;
 	
 	public DataPool(CraftNetwork cn)
 	{
@@ -50,6 +52,24 @@ public class DataPool {
 		{
 			friendsConfig.save(friendsFile);
 		} catch (IOException e) {}
+		
+		friendRequestFile = new File(cn.getDataFolder(), "friendrequest.cn");
+		
+		if(!friendRequestFile.exists())
+		{
+			try
+			{
+				friendRequestFile.createNewFile();
+				friendRequestConfig = YamlConfiguration.loadConfiguration(friendRequestFile);
+			} catch (IOException e) {}
+		} else {
+			friendRequestConfig = YamlConfiguration.loadConfiguration(friendRequestFile);
+		}
+		
+		try
+		{
+			friendRequestConfig.save(friendRequestFile);
+		} catch (IOException e) {}
 	}
 	
 	public static void saveData()
@@ -59,6 +79,10 @@ public class DataPool {
 		try
 		{
 			friendsConfig.save(friendsFile);
+		} catch (IOException e) {}
+		try
+		{
+			friendRequestConfig.save(friendRequestFile);
 		} catch (IOException e) {}
 	}
 	
@@ -84,6 +108,24 @@ public class DataPool {
 		try
 		{
 			friendsConfig.save(friendsFile);
+		} catch (IOException e) {}
+		
+		friendRequestFile = new File(cn.getDataFolder(), "friendrequest.cn");
+		
+		if(!friendRequestFile.exists())
+		{
+			try
+			{
+				friendRequestFile.createNewFile();
+				friendRequestConfig = YamlConfiguration.loadConfiguration(friendRequestFile);
+			} catch (IOException e) {}
+		} else {
+			friendRequestConfig = YamlConfiguration.loadConfiguration(friendRequestFile);
+		}
+		
+		try
+		{
+			friendRequestConfig.save(friendRequestFile);
 		} catch (IOException e) {}
 	}
 	
@@ -116,5 +158,10 @@ public class DataPool {
 	public static YamlConfiguration getFriendsConfig()
 	{
 		return friendsConfig;
+	}
+	
+	public static YamlConfiguration getFriendRequestConfig()
+	{
+		return friendRequestConfig;
 	}
 }
