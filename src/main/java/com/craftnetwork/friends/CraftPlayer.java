@@ -53,15 +53,23 @@ public class CraftPlayer {
 	public void setupPlayer()
 	{
 		List<String> fList = (List<String>) DataPool.getFriendsConfig().getList("friendlist." + p.getName());
+		List<String> frList = (List<String>) DataPool.getFriendRequestConfig().getList("friendrequest." + p.getName());
 		
 		if(fList == null)
 		{
 			String[] fBlank = {};
 			
 			DataPool.getFriendsConfig().set("friendlist." + p.getName(), Arrays.asList(fBlank));
-			
-			DataPool.saveData();
-			DataPool.reloadData();
 		}
+		
+		if(frList == null)
+		{
+			String[] frBlank = {};
+			
+			DataPool.getFriendRequestConfig().set("friendrequest." + p.getName(), Arrays.asList(frBlank));
+		}
+		
+		DataPool.saveData();
+		DataPool.reloadData();
 	}
 }

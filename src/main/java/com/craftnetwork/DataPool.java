@@ -155,6 +155,48 @@ public class DataPool {
 		saveData();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public static void addFriendRequest(String player, String friend)
+	{
+		List<String> frList = (List<String>) friendRequestConfig.getList("friendrequest." + player);
+		
+		if(frList == null)
+		{
+			String[] frBlank = {};
+			
+			friendRequestConfig.set("friendrequest." + player, Arrays.asList(frBlank));
+			
+			saveData();
+		}
+		
+		List<String> rfList = (List<String>) friendRequestConfig.getList("friendrequest." + player);
+		
+		rfList.add(friend);
+		
+		saveData();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static void removeFriendRequest(String player, String friend)
+	{
+		List<String> frList = (List<String>) friendRequestConfig.getList("friendrequest." + player);
+		
+		if(frList == null)
+		{
+			String[] frBlank = {};
+			
+			friendRequestConfig.set("friendrequest." + player, Arrays.asList(frBlank));
+			
+			saveData();
+		}
+		
+		List<String> rfList = (List<String>) friendRequestConfig.getList("friendrequest." + player);
+		
+		rfList.remove(friend);
+		
+		saveData();
+	}
+	
 	public static YamlConfiguration getFriendsConfig()
 	{
 		return friendsConfig;

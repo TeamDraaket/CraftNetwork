@@ -14,6 +14,8 @@ public class CraftNetwork extends JavaPlugin {
 		Logger.getLogger("Minecraft").info("[Social] Services have loaded! Please contact Nijokkin if errors occur!");
 		
 		getServer().getPluginManager().registerEvents(new EventLogin(), this);
+		
+		getCommand("cn").setExecutor(new CommandCN());
 	}
 	
 	public void onDisable()
