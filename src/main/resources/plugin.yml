@@ -1,0 +1,9 @@
+name: CraftNetwork
+main: com.craftnetwork.CraftNetwork
+version: 1.0.0-B1 Beta
+description: The social network for Minecraft.
+softdepend: [Vault]
+commands:
+    cn:
+        description: Global command for CraftNetwork.
+        usage: Sorry, command is currently not functioning!
